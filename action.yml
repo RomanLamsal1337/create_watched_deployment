@@ -1,0 +1,22 @@
+name: StargateDeployment
+description: "Create deployment and update status accordingly"
+inputs:
+  token:
+    required: true
+    description: "Token to use. Must have (full) repo and actions scope."
+  environment:
+    required: true
+    description: "Name of the environment where the deployment will be created."
+  environment_url:
+    required: false
+    description: "URL of the environment where the deployment will be created."
+  ref:
+    required: false
+    description: "Ref to use when creating the deployment. Defaults to ${{ github.ref }}."
+  required_contexts:
+    required: false
+    description: "List of required contexts as stringified JSON array. Defaults to undefined."
+runs:
+  using: node12
+  main: "build/main.js"
+  post: "build/post.js"
