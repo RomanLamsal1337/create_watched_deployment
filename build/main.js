@@ -6223,9 +6223,10 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.octokitClient = void 0;
 const core = __importStar(__webpack_require__(225));
 const github = __importStar(__webpack_require__(142));
-if (!process.env.GITHUB_TOKEN)
-    core.setFailed("No Github Token in environment.");
-exports.octokitClient = github.getOctokit(process.env.GITHUB_TOKEN);
+const token = core.getInput("token");
+if (!token)
+    core.setFailed("No Github Token provided.");
+exports.octokitClient = github.getOctokit(token);
 
 
 /***/ }),

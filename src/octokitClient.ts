@@ -1,7 +1,9 @@
 import * as core from "@actions/core"
 import * as github from "@actions/github"
 
-if (!process.env.GITHUB_TOKEN)
-    core.setFailed("No Github Token in environment.")
+const token = core.getInput("token")
 
-export const octokitClient = github.getOctokit(process.env.GITHUB_TOKEN!)
+if (!token)
+    core.setFailed("No Github Token provided.")
+
+export const octokitClient = github.getOctokit(token)
