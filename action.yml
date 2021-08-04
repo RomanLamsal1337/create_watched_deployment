@@ -12,7 +12,7 @@ inputs:
     description: "URL of the environment where the deployment will be created."
   ref:
     required: false
-    description: "Ref to use when creating the deployment. Defaults to ${{ github.ref }}."
+    description: "Ref to use when creating the deployment. Defaults to github.ref."
   required_contexts:
     required: false
     description: "List of required contexts as stringified JSON array. Defaults to undefined."
