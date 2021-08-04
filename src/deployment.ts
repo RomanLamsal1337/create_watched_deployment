@@ -2,6 +2,7 @@ import {getInputs} from "./getInputs"
 import {octokitClient} from "./octokitClient"
 import {DeploymentId, saveDeploymentId} from "./deploymentId"
 import {context} from "@actions/github"
+import * as core from "@actions/core"
 
 export const createDeployment = async (): Promise<DeploymentId> => {
     const inputs = getInputs()
@@ -23,6 +24,7 @@ export const createDeployment = async (): Promise<DeploymentId> => {
 
 export const setDeploymentState = async (deploymentId: DeploymentId, state: "failure" | "success" | "in_progress") => {
     const inputs = getInputs()
+    core.info(`Updating deployment status to '${state}'.`)
 
     const mediaTypePreviews: { [key in typeof state]: string[] } = {
         success: ["ant-man"],
